@@ -1,0 +1,46 @@
+:root {
+  /* Backgrounds */
+  --bg-body: #f8f5f0;
+  --bg-secondary: #e8d6d3;
+
+  /* Cards */
+  --bg-card: #7a2f3c;
+  --bg-cupon: #f8f5ed;
+
+  --bg-page: #f8f5f0;
+  --bg-cupon: #fffdf8;
+
+  /* Colors */
+  --color-primary: #7a3e48;
+  --color-secondary: #c9a96e;
+  --color-accent: #b9828b;
+  --color-texto: #242124;
+  --color-texto-secundario: #766d6f;
+
+  --color-white: #fffdfc;
+  --color-black: #222222;
+
+  /* Fonts */
+  --font-titulos: "Roboto", sans-serif;
+  --font-subtitulos: "Open Sans", sans-serif;
+  --font-texto: "Arial", sans-serif;
+
+  /* Botones */
+  --button-bg-principal: linear-gradient(45deg, #7a3e48, #b9828b);
+  --button-bg-hover: linear-gradient(45deg, #552c32, #835c63);
+
+  --button-bg-confirmacion: #00c925;
+  --button-bg-confirmacion-hover: #006f13;
+
+  --button-bg-cancelar: #ff0000;
+  --button-bg-cancelar-hover: #8d0000;
+
+  --button-bg-accion: #638dff;
+  --button-bg-accion-hover: #042ab1;
+
+  /* tiers */
+  --tier-1: #2cda00;
+  --tier-2: #0055de;
+  --tier-3: #7400d3;
+  --tier-4: #d20000;
+}

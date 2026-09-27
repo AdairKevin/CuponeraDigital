@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+  </head>
+  <body>
+    <main class="cuponera">
+      <header class="hero">
+        <p class="eyebrow">PARA TI CON AMOR</p>
+
+        <h1>Cuponera de Aniversario ❤️</h1>
+
+        <small class="intro"
+          >Pequeñas experiencias para disfrutar juntos.</small
+        >
+      </header>
+
+      <section class="user">
+        <div class="user-info">
+          <img src="./assets/img/user.jpg" alt="user" class="user-img" />
+          <h3 class="user-name">Nyah Juarez</h3>
+        </div>
+        <p class="user-description">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, unde.
+        </p>
+
+        <button class="btnAbrir" id="btnAbrir">Como funciona?</button>
+      </section>
+
+      <div class="modal" id="modal">
+        <div class="modal-contenido">
+          <h2>¿Cómo funciona?</h2>
+          <p>
+            Para canjear un cupón, simplemente seleccioná el que quieras y
+            presiona el botón "Canjear". Me llegara una notificación y el cupón
+            se marcará como canjeado. ¡Disfrutalo!
+          </p>
+
+          <aside class="modal-aside">
+            <p>
+              <strong>Nota:</strong> Los cupones: <br />
+              <b class="tier-1">Tier 1</b> Son para canjear en cualquier
+              momento, recibiras la recompenza en menos de 24 horas <br />
+              <b class="tier-2">Tier 2</b> Son para canjear en ocasiones
+              especiales, recibiras la recompenza de 1 a 2 dias despues de
+              canjearlo <br />
+              <b class="tier-3">Tier 3</b> Son muy especiales, reciiras la
+              recompenza de 1 a 2 semanas dependiendo del cupon y disponibilidad
+              <br /><br />
+              Maximo 2 cupones por semana
+            </p>
+          </aside>
+
+          <button class="btn-aceptar" id="btnAceptar">Confirmar</button>
+        </div>
+      </div>
+
+      <section id="lista-cupones" class="lista-cupones">
+        <p>Cargando cupones...</p>
+      </section>
+    </main>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/components.js"></script>
+  </body>
+</html>

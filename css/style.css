@@ -1,0 +1,585 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--color-texto);
+  background: var(--bg-body);
+}
+
+.cuponera {
+  width: 100%;
+  background: var(--bg-body);
+  color: var(--color-texto);
+}
+
+.hero {
+  width: 100%;
+  text-align: center;
+  padding: 40px 20px 50px 20px;
+
+  background: var(--bg-card);
+  color: var(--color-white);
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.6;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin: 10px 0;
+}
+
+.intro {
+  opacity: 0.7;
+}
+
+.user {
+  width: 100%;
+  margin: -25px 0 0 0;
+  padding: 20px 15px;
+  background: var(--bg-secondary);
+  border-radius: 25px 25px 0 0;
+}
+
+.user-info {
+  display: grid;
+  grid-template-columns: 0fr 4fr;
+  gap: 10px;
+}
+
+.user-img {
+  min-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 1px solid var(--color-secondary);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.33);
+}
+
+.user-name {
+  font-weight: bold;
+  margin: 0;
+  align-self: center;
+}
+
+.user-description {
+  font-size: 15px;
+  color: var(--color-texto-secundario);
+  margin: 0;
+  padding: 5px 0 10px 0;
+  align-self: center;
+}
+
+.btnAbrir {
+  border: 0;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  background: var(--button-bg-principal);
+  color: var(--color-white);
+}
+
+.btnAbrir:hover {
+  background: var(--button-bg-hover);
+}
+
+.modal {
+  display: none;
+}
+
+.modal.activo {
+  display: flex;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.modal-contenido {
+  background: var(--bg-body);
+  padding: 30px 25px;
+  border-radius: 1rem;
+  width: min(90%, 400px);
+}
+
+.modal-contenido h2 {
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.modal-contenido p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-texto-secundario);
+  margin-bottom: 10px;
+}
+
+.modal-aside {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-texto-secundario);
+}
+
+.tier-1 {
+  color: var(--tier-1);
+}
+
+.tier-2 {
+  color: var(--tier-2);
+}
+
+.tier-3 {
+  color: var(--tier-3);
+}
+
+.btn-aceptar {
+  border: 0;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  background: var(--button-bg-accion);
+  color: var(--color-white);
+}
+
+.lista-cupones {
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  background-color: var(--bg-secondary);
+}
+
+.cupon {
+  /* =========================
+     ESTRUCTURA
+  ========================= */
+
+  position: relative;
+
+  width: 95%;
+  margin: 0 auto;
+  min-height: 220px;
+
+  display: flex;
+
+  box-sizing: border-box;
+
+  margin-bottom: 25px;
+
+  /* =========================
+     APARIENCIA
+  ========================= */
+
+  background: var(--bg-cupon, #ffffff);
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+
+  /* Evita problemas con los elementos internos */
+  isolation: isolate;
+}
+
+/* =====================================================
+   MUESCAS / TROQUELADO DE LOS LATERALES
+===================================================== */
+
+.cupon::before,
+.cupon::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  width: 18px;
+  height: 100%;
+
+  background: radial-gradient(
+      circle at center,
+      var(--bg-secondary, #f5f5f5) 7px,
+      transparent 7.5px
+    )
+    center / 18px 22px repeat-y;
+
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+/* LADO IZQUIERDO */
+
+.cupon::before {
+  left: -9px;
+}
+
+/* LADO DERECHO */
+
+.cupon::after {
+  right: -9px;
+}
+
+/* =====================================================
+   CONTENIDO PRINCIPAL
+===================================================== */
+
+.cupon-contenido {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 35px 125px 30px 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  z-index: 2;
+}
+
+/* =====================================================
+   LÍNEA DE PERFORACIÓN
+===================================================== */
+
+/* =====================================================
+   ID DEL CUPÓN
+===================================================== */
+
+.cupon-id {
+  position: absolute;
+
+  top: 15px;
+  left: 25px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  opacity: 0.45;
+
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   TIER
+===================================================== */
+
+.cupon-tier {
+  display: inline-block;
+
+  margin-bottom: 7px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  opacity: 0.55;
+}
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.cupon h2 {
+  margin: 4px 0 10px;
+
+  font-size: 28px;
+
+  line-height: 1.1;
+
+  font-weight: 700;
+}
+
+/* =====================================================
+   DESCRIPCIÓN
+===================================================== */
+
+.cupon p {
+  margin: 0;
+
+  max-width: 90%;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  opacity: 0.7;
+}
+
+/* =====================================================
+   BOTÓN CANJEAR
+===================================================== */
+
+.btn-canjear {
+  align-self: flex-start;
+
+  margin-top: 20px;
+
+  padding: 11px 24px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #000000;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-canjear:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.9;
+
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-canjear:active {
+  transform: translateY(0);
+}
+
+/* =====================================================
+   ZONA VISUAL DERECHA
+===================================================== */
+
+/*
+   Como tu HTML actual no tiene un div separado
+   para esta zona, utilizamos el espacio que dejamos
+   mediante padding-right.
+*/
+
+.cupon::marker {
+  display: none;
+}
+
+/* =====================================================
+   CUPÓN CANJEADO
+===================================================== */
+
+.cupon.canjeado {
+  filter: grayscale(1);
+
+  opacity: 0.6;
+}
+
+.cupon.canjeado .btn-canjear {
+  display: none;
+}
+
+/* =====================================================
+   MENSAJE CUPÓN USADO
+===================================================== */
+
+.cupon-usado {
+  margin-top: 18px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  opacity: 0.55;
+}
+
+/* =====================================================
+   FECHA DE CANJE
+===================================================== */
+
+.cupon-usado + small {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 11px;
+
+  opacity: 0.45;
+}
+
+/* =====================================================
+   EFECTO DE PAPEL
+===================================================== */
+
+.cupon {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.02)
+  );
+}
+
+/* =====================================================
+   RESPONSIVE - CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+  .cupon {
+    min-height: 200px;
+
+    border-radius: 0px;
+  }
+
+  .cupon-contenido {
+    padding: 32px 95px 25px 22px;
+  }
+
+  /* Línea de perforación */
+
+  .cupon-contenido::after {
+    right: 70px;
+
+    top: 15px;
+    bottom: 15px;
+  }
+
+  /* Círculo central */
+
+  .cupon-contenido::before {
+    right: 56px;
+
+    width: 26px;
+    height: 26px;
+  }
+
+  /* ID */
+
+  .cupon-id {
+    left: 22px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+  }
+
+  /* Tier */
+
+  .cupon-tier {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  /* Título */
+
+  .cupon h2 {
+    font-size: 22px;
+  }
+
+  /* Descripción */
+
+  .cupon p {
+    max-width: 100%;
+
+    font-size: 13px;
+  }
+
+  /* Botón */
+
+  .btn-canjear {
+    padding: 10px 20px;
+
+    font-size: 11px;
+  }
+
+  /* Muescas */
+
+  .cupon::before,
+  .cupon::after {
+    width: 16px;
+
+    background-size: 16px 20px;
+  }
+
+  .cupon::before {
+    left: -8px;
+  }
+
+  .cupon::after {
+    right: -8px;
+  }
+}
+
+.cupon-lateral {
+  position: relative;
+
+  width: 95px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  box-sizing: border-box;
+
+  padding: 15px;
+
+  background: rgba(0, 0, 0, 0.03);
+
+  z-index: 2;
+}
+
+/* Texto vertical */
+
+.lateral-text {
+  writing-mode: vertical-rl;
+
+  transform: rotate(180deg);
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  opacity: 0.7;
+}
+
+/* Número del cupón */
+
+.cupon-lateral {
+  border-left: 2px dashed rgba(0, 0, 0, 0.2);
+}
