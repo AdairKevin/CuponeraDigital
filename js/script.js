@@ -47,24 +47,15 @@ function mostrarCupones(cupones) {
       card.classList.add("canjeado");
     }
 
+    card.className = `cupon ${obtenerClaseTier(cupon.tier)}`;
     // Crear el contenido del cupón
     card.innerHTML = `
 
-      <!-- =================================
-           PARTE PRINCIPAL DEL CUPÓN
-      ================================== -->
-
       <div class="cupon-contenido">
-
-        <span class="cupon-id">
-          ${cupon.id}
-        </span>
-
 
         <span class="cupon-tier">
           ${cupon.tier}
         </span>
-
 
         <h2>
           ${cupon.titulo}
@@ -108,11 +99,6 @@ function mostrarCupones(cupones) {
         }
 
       </div>
-
-
-      <!-- =================================
-           PARTE DESPRENDIBLE DEL CUPÓN
-      ================================== -->
 
       <div class="cupon-lateral">
 
@@ -171,6 +157,16 @@ async function canjearCupon(couponId) {
 
     alert("No pudimos conectar con la cuponera.\n\n" + "Inténtalo nuevamente.");
   }
+}
+
+function obtenerClaseTier(tier) {
+  const nombre = String(tier)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-");
+
+  return `tier-${nombre}`;
 }
 
 cargarCupones();

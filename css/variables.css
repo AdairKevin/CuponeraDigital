@@ -1,29 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 :root {
   /* Backgrounds */
   --bg-body: #f8f5f0;
-  --bg-secondary: #e8d6d3;
+  --bg-secondary: #f4ebe9;
 
   /* Cards */
   --bg-card: #7a2f3c;
-  --bg-cupon: #f8f5ed;
+  --bg-cupon: #fffbed;
 
   --bg-page: #f8f5f0;
-  --bg-cupon: #fffdf8;
 
   /* Colors */
   --color-primary: #7a3e48;
   --color-secondary: #c9a96e;
   --color-accent: #b9828b;
   --color-texto: #242124;
-  --color-texto-secundario: #766d6f;
+  --color-texto-secundario: #9a8c8f;
 
   --color-white: #fffdfc;
   --color-black: #222222;
 
   /* Fonts */
-  --font-titulos: "Roboto", sans-serif;
-  --font-subtitulos: "Open Sans", sans-serif;
-  --font-texto: "Arial", sans-serif;
+  --font-titulos: "Unna", serif;
+  --font-subtitulos: "Great Vibes", cursive;
+  --font-texto: "roboto", serif;
 
   /* Botones */
   --button-bg-principal: linear-gradient(45deg, #7a3e48, #b9828b);
@@ -38,9 +39,46 @@
   --button-bg-accion: #638dff;
   --button-bg-accion-hover: #042ab1;
 
-  /* tiers */
-  --tier-1: #2cda00;
-  --tier-2: #0055de;
-  --tier-3: #7400d3;
-  --tier-4: #d20000;
+  /* =========================
+     TIERS — VINTAGE LOVE
+  ========================= */
+
+  --tier-1: #b88a6a;
+  --tier-2: #a85c68;
+  --tier-3: #76536b;
+  --tier-4: #6b3038;
+
+  --btn: #382d30;
+
+  /* =========================
+     GRADIENTES
+  ========================= */
+
+  --tier-1-gradient: linear-gradient(
+    135deg,
+    #d8b59a 0%,
+    #b88a6a 50%,
+    #8e6652 100%
+  );
+
+  --tier-2-gradient: linear-gradient(
+    135deg,
+    #d69aa3 0%,
+    #a85c68 50%,
+    #743d48 100%
+  );
+
+  --tier-3-gradient: linear-gradient(
+    135deg,
+    #a68aa0 0%,
+    #76536b 50%,
+    #4d3749 100%
+  );
+
+  --tier-4-gradient: linear-gradient(
+    135deg,
+    #a85c63 0%,
+    #6b3038 50%,
+    #401d23 100%
+  );
 }
