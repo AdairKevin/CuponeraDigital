@@ -6,6 +6,7 @@
 
 body {
   font-family: var(--font-texto);
+  background: var(--bg-secondary);
 }
 
 header {

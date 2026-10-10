@@ -7,6 +7,7 @@ body {
 
 .cuponera {
   width: 100%;
+
   background: var(--bg-body);
   color: var(--color-texto);
 }
@@ -399,13 +400,12 @@ body {
 
 .cupon {
   position: relative;
-  width: 97%;
+  width: 96%;
   margin: 0 auto;
   min-height: 220px;
   display: flex;
   box-sizing: border-box;
   margin-bottom: 25px;
-
   background: var(--bg-cupon);
   box-shadow: 1px 15px 40px rgba(0, 0, 0, 0.197);
   overflow: hidden;
@@ -662,4 +662,832 @@ body {
 
 .tier-tier-3 .cupon-lateral {
   background: var(--tier-3-gradient);
+}
+
+/* ========================================
+   MODALES
+======================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  background: rgba(36, 33, 36, 0.48);
+  backdrop-filter: blur(5px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.modal-overlay.activo {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-cupon {
+  position: relative;
+  isolation: isolate;
+
+  width: min(100%, 420px);
+  padding: 42px 28px 30px;
+
+  overflow: hidden;
+  text-align: center;
+
+  color: #34272a;
+  background-color: #f8f5ed;
+  background-image: radial-gradient(
+    rgba(120, 90, 60, 0.045) 0.6px,
+    transparent 0.8px
+  );
+
+  background-size: 7px 7px;
+
+  border: 1px solid #dfc9ad;
+  border-radius: 8px;
+
+  box-shadow: 0 25px 80px rgba(35, 20, 25, 0.25);
+
+  transform: translateY(18px) scale(0.94);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.modal-overlay.activo .modal-cupon {
+  transform: translateY(0) scale(1);
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  z-index: 2;
+
+  padding: 4px;
+  border: 0;
+  background: transparent;
+
+  color: #8b7776;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-cerrar:hover {
+  color: #7a3e48;
+}
+
+.modal-icono {
+  display: grid;
+  place-items: center;
+
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 22px;
+
+  border: 1px solid #7a3e48;
+  border-radius: 50%;
+
+  color: #7a3e48;
+  font-family: Georgia, serif;
+  font-size: 42px;
+
+  animation: latido 2s ease-in-out infinite;
+}
+
+.modal-etiqueta {
+  display: block;
+  margin-bottom: 12px;
+
+  color: #9a7955;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  line-height: 1.6;
+}
+
+.modal-cupon h2 {
+  margin: 0 0 12px;
+
+  color: #633943;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(25px, 6vw, 32px);
+  font-weight: normal;
+}
+
+.modal-cupon p {
+  margin: 0 auto 25px;
+  max-width: 300px;
+
+  color: #766d6f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.modal-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-modal-principal,
+.btn-modal-secundario {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 20px;
+
+  border-radius: 999px;
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-modal-principal {
+  border: 1px solid #7a3e48;
+  background: #7a3e48;
+  color: #fffaf5;
+}
+
+.btn-modal-principal:hover {
+  background: #63313a;
+  box-shadow: 0 5px 18px rgba(122, 62, 72, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-modal-secundario {
+  border: 1px solid #dfd2c5;
+  background: transparent;
+  color: #766d6f;
+}
+
+.btn-modal-secundario:hover {
+  background: rgba(201, 169, 110, 0.1);
+}
+
+button:focus-visible {
+  outline: 3px solid #c9a96e;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+/* ========================================
+   ANIMACIÓN DE CARGA
+======================================== */
+
+.modal-resultado {
+  padding-top: 38px;
+}
+
+.animacion-corazon {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 25px;
+
+  border: 1px solid #e5d3b5;
+  border-radius: 50%;
+
+  background: rgba(255, 253, 248, 0.75);
+}
+
+.animacion-corazon::before {
+  content: "";
+
+  position: absolute;
+  inset: -7px;
+
+  border: 2px solid transparent;
+  border-top-color: #c9a96e;
+  border-right-color: #c9a96e;
+  border-radius: 50%;
+
+  animation: girar 2s linear infinite;
+}
+
+.corazon {
+  color: #9b5362;
+  font-family: Georgia, serif;
+  font-size: 52px;
+
+  animation: latido 1s ease-in-out infinite;
+}
+
+/* ========================================
+   CELEBRACIÓN DE ÉXITO
+======================================== */
+
+.modal-resultado.exito .animacion-corazon {
+  animation: aparecer-corazon 0.6s ease both;
+  box-shadow: 0 0 0 8px rgba(201, 169, 110, 0.08);
+}
+
+.modal-resultado.exito .corazon {
+  color: #b78643;
+  animation: latido 0.8s ease-in-out 3;
+}
+
+.modal-resultado.exito .animacion-corazon::before {
+  animation: girar 1.5s linear 2;
+}
+
+.modal-resultado.exito h2 {
+  animation: texto-aparece 0.6s ease both;
+}
+
+.modal-resultado.exito .btn-resultado {
+  animation: texto-aparece 0.5s ease 0.2s both;
+}
+
+.particulas {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particula {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+
+  color: #c9a96e;
+  font-size: 18px;
+
+  opacity: 0;
+  animation: particula-vuela 1.1s ease-out forwards;
+}
+
+/* ========================================
+   ESTADO DE ERROR
+======================================== */
+
+.modal-resultado.error .animacion-corazon {
+  border-color: #d9a6a6;
+}
+
+.modal-resultado.error .corazon {
+  color: #b85c5c;
+  animation: error-mover 0.4s ease;
+}
+
+/* ========================================
+   ANIMACIONES KEYFRAMES
+======================================== */
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes latido {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes aparecer-corazon {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  65% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes texto-aparece {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes particula-vuela {
+  0% {
+    transform: translate(-50%, 0) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(-50% + var(--mov-x)), var(--mov-y)) scale(1)
+      rotate(160deg);
+    opacity: 0;
+  }
+}
+
+@keyframes error-mover {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+======================================== */
+
+[hidden] {
+  display: none !important;
+}
+
+@media (min-width: 600px) {
+  .modal-botones {
+    flex-direction: row;
+  }
+
+  .modal-botones button {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   BIENVENIDA
+======================================== */
+
+.bienvenida {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px;
+
+  background-color: #f8f5ed;
+  background-image:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(201, 169, 110, 0.1),
+      transparent 35%
+    ),
+    radial-gradient(circle at 80% 80%, rgba(122, 62, 72, 0.07), transparent 40%);
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.55s ease,
+    visibility 0.55s ease;
+}
+
+.bienvenida.oculta {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bienvenida-contenido {
+  width: min(100%, 420px);
+  text-align: center;
+
+  animation: bienvenida-entrada 0.8s ease both;
+}
+
+/* Emblema */
+
+.bienvenida-emblema {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 28px;
+
+  border: 1px solid #c9a96e;
+  border-radius: 50%;
+
+  animation: emblema-aparece 0.8s ease both;
+}
+
+.bienvenida-emblema::before {
+  content: "";
+
+  position: absolute;
+  inset: 7px;
+
+  border: 1px solid rgba(201, 169, 110, 0.45);
+  border-radius: 50%;
+}
+
+.bienvenida-corazon {
+  color: #7a3e48;
+  font-family: Georgia, serif;
+  font-size: 57px;
+  line-height: 1;
+
+  animation: corazon-bienvenida 1.2s ease-in-out infinite;
+}
+
+/* Destellos */
+
+.destello {
+  position: absolute;
+  color: #b99557;
+  opacity: 0;
+
+  animation: destello-aparece 1.1s ease forwards;
+}
+
+.destello-1 {
+  top: 4px;
+  right: 0;
+  font-size: 19px;
+  animation-delay: 0.3s;
+}
+
+.destello-2 {
+  left: -9px;
+  top: 30px;
+  font-size: 16px;
+  animation-delay: 0.5s;
+}
+
+.destello-3 {
+  right: 7px;
+  bottom: 5px;
+  font-size: 13px;
+  animation-delay: 0.65s;
+}
+
+/* Textos */
+
+.bienvenida-etiqueta {
+  margin: 0 0 14px;
+
+  color: #a0805d;
+  font-size: 10px;
+  letter-spacing: 3px;
+  line-height: 1.8;
+
+  animation: texto-bienvenida 0.7s ease 0.15s both;
+}
+
+.bienvenida h1 {
+  margin: 0;
+
+  color: #633943;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 8vw, 44px);
+  font-weight: normal;
+  line-height: 1.2;
+
+  animation: texto-bienvenida 0.7s ease 0.25s both;
+}
+
+.bienvenida h1 em {
+  display: block;
+
+  color: #9b6670;
+  font-weight: normal;
+}
+
+.bienvenida-texto {
+  margin: 18px 0 28px;
+
+  color: #766d6f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  font-style: italic;
+
+  animation: texto-bienvenida 0.7s ease 0.4s both;
+}
+
+/* Línea de carga */
+
+.bienvenida-carga {
+  width: 115px;
+  height: 2px;
+  margin: 0 auto;
+
+  overflow: hidden;
+  background: #e5d9ca;
+
+  animation: texto-bienvenida 0.7s ease 0.45s both;
+}
+
+.bienvenida-carga span {
+  display: block;
+
+  width: 45%;
+  height: 100%;
+
+  background: #9b6670;
+
+  animation: linea-carga 1s ease-in-out infinite;
+}
+
+/* ========================================
+   KEYFRAMES
+======================================== */
+
+@keyframes bienvenida-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes emblema-aparece {
+  from {
+    opacity: 0;
+    transform: scale(0.75) rotate(-12deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes corazon-bienvenida {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.09);
+  }
+}
+
+@keyframes destello-aparece {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.15) rotate(10deg);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes texto-bienvenida {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes linea-carga {
+  from {
+    transform: translateX(-120%);
+  }
+
+  to {
+    transform: translateX(340%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bienvenida *,
+  .bienvenida {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Botón para saltar la bienvenida */
+
+.bienvenida-saltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 35px;
+  padding: 10px 15px;
+
+  border: 1px solid transparent;
+  border-radius: 999px;
+
+  background: transparent;
+  color: #8b7776;
+
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+
+  cursor: pointer;
+
+  opacity: 0;
+  animation: texto-bienvenida 0.7s ease 0.8s both;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.bienvenida-saltar span {
+  color: #b99557;
+  transition: transform 0.25s ease;
+}
+
+.bienvenida-saltar:hover {
+  color: #7a3e48;
+  border-color: #dfc9ad;
+  background: rgba(255, 253, 248, 0.6);
+}
+
+.bienvenida-saltar:hover span {
+  transform: translateX(4px);
+}
+
+.bienvenida-saltar:focus-visible {
+  outline: 2px solid #c9a96e;
+  outline-offset: 4px;
+}
+
+/* ========================================
+   FOOTER ROMÁNTICO
+======================================== */
+
+.footer-amor {
+  position: relative;
+  padding: 45px 20px 30px;
+  margin-top: 40px;
+  text-align: center;
+
+  border-top: 1px solid rgb(201, 169, 110);
+}
+
+/* Separador decorativo */
+
+.footer-decoracion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+
+  margin-bottom: 24px;
+}
+
+.footer-decoracion > span:not(.footer-corazon) {
+  width: 45px;
+  height: 1px;
+  background: #c9a96e;
+}
+
+.footer-corazon {
+  color: #9b6670;
+  font-family: Georgia, serif;
+  font-size: 23px;
+
+  animation: latido 2.5s ease-in-out infinite;
+}
+
+/* Frase principal */
+
+.footer-frase {
+  margin: 0;
+
+  color: #633943;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 5vw, 27px);
+  line-height: 1.5;
+  font-weight: normal;
+}
+
+.footer-frase em {
+  display: block;
+
+  color: #9b6670;
+  font-weight: normal;
+}
+
+/* Dedicatoria */
+
+.footer-dedicatoria {
+  margin: 16px 0 28px;
+
+  color: #766d6f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* Firma */
+
+.footer-firma {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  color: #a0805d;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.footer-infinito {
+  color: #9b6670;
+  font-family: Georgia, serif;
+  font-size: 21px;
+}
+
+/* Texto final */
+
+.footer-copy {
+  margin: 24px 0 0;
+
+  color: #a49a91;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Pantallas grandes */
+
+@media (min-width: 600px) {
+  .footer-amor {
+    padding-top: 55px;
+    padding-bottom: 35px;
+  }
+
+  .footer-dedicatoria {
+    margin-bottom: 32px;
+  }
 }

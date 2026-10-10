@@ -1,3 +1,44 @@
+const bienvenida = document.getElementById("bienvenida");
+const btnSaltarBienvenida = document.getElementById("saltar-bienvenida");
+
+const DURACION_BIENVENIDA = 10000; // 10 segundos
+const inicioBienvenida = performance.now();
+
+let cuponesListos = false;
+let bienvenidaTerminada = false;
+let temporizadorBienvenida;
+
+function ocultarBienvenida() {
+  // Evita cerrar la bienvenida más de una vez.
+  if (bienvenidaTerminada) return;
+
+  bienvenidaTerminada = true;
+
+  clearTimeout(temporizadorBienvenida);
+
+  bienvenida.classList.add("oculta");
+  bienvenida.setAttribute("aria-hidden", "true");
+}
+
+function intentarTerminarBienvenida() {
+  // Espera a que los cupones estén cargados.
+  if (!cuponesListos || bienvenidaTerminada) return;
+
+  const tiempoTranscurrido = performance.now() - inicioBienvenida;
+  const tiempoRestante = Math.max(0, DURACION_BIENVENIDA - tiempoTranscurrido);
+
+  clearTimeout(temporizadorBienvenida);
+
+  temporizadorBienvenida = setTimeout(() => {
+    ocultarBienvenida();
+  }, tiempoRestante);
+}
+
+// El usuario puede saltar la animación en cualquier momento.
+btnSaltarBienvenida.addEventListener("click", () => {
+  ocultarBienvenida();
+});
+
 async function cargarCupones() {
   const contenedor = document.getElementById("lista-cupones");
 
@@ -15,12 +56,16 @@ async function cargarCupones() {
     console.error(error);
 
     contenedor.innerHTML = `
-      <p class="error">
-        No pudimos cargar tus cupones.
-      </p>
-    `;
+            <p class="error">
+                No pudimos cargar tus cupones.
+            </p>
+        `;
+  } finally {
+    cuponesListos = true;
+    intentarTerminarBienvenida();
   }
 }
+
 function mostrarCupones(cupones) {
   // Buscar el contenedor donde aparecerán los cupones
   const contenedor = document.getElementById("lista-cupones");
@@ -73,7 +118,7 @@ function mostrarCupones(cupones) {
 
               <button
                 class="btn-canjear"
-                onclick="canjearCupon('${cupon.id}')"
+                data-cupon-id="${cupon.id}"
               >
                 CANJEAR
               </button>
@@ -119,6 +164,22 @@ function mostrarCupones(cupones) {
     contenedor.appendChild(card);
   });
 }
+
+document.getElementById("lista-cupones").addEventListener("click", (evento) => {
+  const boton = evento.target.closest("[data-cupon-id]");
+
+  if (!boton || canjeEnProceso) return;
+
+  const tarjeta = boton.closest(".cupon");
+  const titulo = tarjeta.querySelector("h2")?.textContent.trim();
+  const descripcion = tarjeta.querySelector("p")?.textContent.trim();
+
+  prepararCanje(
+    boton.dataset.cuponId,
+    titulo || "Nuestro momento",
+    descripcion,
+  );
+});
 
 async function canjearCupon(couponId) {
   const confirmar = confirm(

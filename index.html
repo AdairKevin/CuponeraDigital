@@ -10,6 +10,36 @@
     <link rel="stylesheet" href="./css/responsive.css" />
   </head>
   <body>
+    <!-- Pantalla de bienvenida -->
+    <div
+      class="bienvenida"
+      id="bienvenida"
+      aria-label="Cargando nuestros momentos"
+    >
+      <div class="bienvenida-contenido">
+        <div class="bienvenida-emblema">
+          <span class="bienvenida-corazon">♡</span>
+          <span class="destello destello-1">✦</span>
+          <span class="destello destello-2">✧</span>
+          <span class="destello destello-3">✦</span>
+        </div>
+
+        <p class="bienvenida-etiqueta">BIENVENIDA A TU CUPONERA</p>
+
+        <h1>NYAH <em>JUAREZ</em></h1>
+
+        <p class="bienvenida-texto">Pequeños detalles, recuerdos infinitos.</p>
+
+        <div class="bienvenida-carga">
+          <span></span>
+        </div>
+
+        <button class="bienvenida-saltar" id="saltar-bienvenida">
+          saltar <span>→</span>
+        </button>
+      </div>
+    </div>
+
     <main class="cuponera">
       <header class="hero">
         <p class="eyebrow">PARA TI CON AMOR</p>
@@ -74,6 +104,95 @@
         <p>Cargando cupones...</p>
       </section>
     </main>
+
+    <!-- Modal para confirmar el canje -->
+    <div class="modal-overlay" id="modal-confirmacion" aria-hidden="true">
+      <section
+        class="modal-cupon"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-titulo"
+      >
+        <button class="modal-cerrar" data-cerrar-modal aria-label="Cerrar">
+          &times;
+        </button>
+
+        <div class="modal-icono">♡</div>
+
+        <span class="modal-etiqueta">UN MOMENTO PARA NOSOTROS</span>
+
+        <h2 id="modal-titulo">¿Lo hacemos realidad?</h2>
+
+        <p id="modal-descripcion">Este momento está esperando por nosotros.</p>
+
+        <div class="modal-botones">
+          <button class="btn-modal-secundario" id="btn-cancelar">
+            Todavía no
+          </button>
+
+          <button class="btn-modal-principal" id="btn-confirmar">
+            ¡Sí, quiero! ♡
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal de proceso y resultado -->
+    <div class="modal-overlay" id="modal-resultado" aria-hidden="true">
+      <section
+        class="modal-cupon modal-resultado"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resultado-titulo"
+        aria-live="polite"
+      >
+        <button
+          class="modal-cerrar"
+          id="btn-cerrar-resultado"
+          aria-label="Cerrar"
+          hidden
+        >
+          &times;
+        </button>
+
+        <div class="animacion-corazon" id="animacion-corazon">
+          <span class="corazon">♡</span>
+        </div>
+
+        <div class="particulas" id="particulas" aria-hidden="true"></div>
+
+        <span class="modal-etiqueta" id="resultado-etiqueta">
+          PREPARANDO ALGO ESPECIAL
+        </span>
+
+        <h2 id="resultado-titulo">Un momento...</h2>
+
+        <p id="resultado-mensaje">Estamos preparando tu sorpresa.</p>
+
+        <button
+          class="btn-modal-principal btn-resultado"
+          id="btn-aceptar-resultado"
+          hidden
+        >
+          ¡Qué emoción! ♡
+        </button>
+      </section>
+    </div>
+
+    <footer class="footer-amor">
+      <div class="footer-decoracion">
+        <span></span>
+        <span class="footer-corazon">♡</span>
+        <span></span>
+      </div>
+
+      <p class="footer-frase">
+        Mi lugar favorito siempre será
+        <em>a tu lado.</em>
+      </p>
+
+      <p class="footer-dedicatoria">Hecho con amor, especialmente para ti.</p>
+    </footer>
 
     <script src="./js/config.js"></script>
     <script src="./js/script.js"></script>
